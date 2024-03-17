@@ -86,12 +86,12 @@ export function TrashDeleteButton() {
     const { pending } = useFormStatus()
     return (
         <>{pending ? (
-            <Button disabled variant='destructive' size='icon'>
+            <Button className="w-full sm:w-10 md:w-10 lg:w-10" disabled variant='destructive' size='icon'>
                 <Loader2 className="size-4 animate-spin" />
             </Button>
         ) : (
 
-            <Button type="submit" variant='destructive' size='icon'>
+            <Button className="w-full sm:w-10 md:w-10 lg:w-10" type="submit" variant='destructive' size='icon'>
                 <Trash className="size-4" />
             </Button>
         )}</>
