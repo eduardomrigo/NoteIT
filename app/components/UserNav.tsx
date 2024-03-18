@@ -25,19 +25,24 @@ export const navItems = [
     { name: 'Pagamento', href: '/dashboard/billing', icon: CreditCard },
 ]
 
-export function UserNav({ name, email, image }: {name: string, email: string, image: string}) {
+export function UserNav({ firstname, lastname, email, image }: { firstname: string, lastname: string, email: string, image: string }) {
+   
+    function getFullName(firstName: string, lastName: string) {
+        return `${firstName || ''} ${lastName || ''}`.trim();
+    }
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant='ghost' className="relative size-10 rounded-full">
                     <Avatar className="size-10 rounded-full">
                         <AvatarImage src={image} alt="Imagem de Perfil" />
-                        <AvatarFallback>ER</AvatarFallback>
+                        <AvatarFallback>{`${firstname ? firstname[0] : ''}${lastname ? lastname[0] : ''}`}</AvatarFallback>
                     </Avatar>
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="end" forceMount>
-                <DropdownMenuLabel>{name}</DropdownMenuLabel>
+                <DropdownMenuLabel>{getFullName(firstname, lastname)}</DropdownMenuLabel>
                 <DropdownMenuLabel className="text-xs leading-none text-muted-foreground">{email}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
@@ -51,12 +56,12 @@ export function UserNav({ name, email, image }: {name: string, email: string, im
                     ))}
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                  <LogoutLink>
-                <DropdownMenuItem className="cursor-pointer">
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Sair</span>
-                </DropdownMenuItem>
-                  </LogoutLink>
+                <LogoutLink>
+                    <DropdownMenuItem className="cursor-pointer">
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Sair</span>
+                    </DropdownMenuItem>
+                </LogoutLink>
             </DropdownMenuContent>
         </DropdownMenu>
     )
