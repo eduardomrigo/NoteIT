@@ -24,7 +24,7 @@ export default async function Home() {
               Crie notas de maneira fácil
             </h1>
             <p className="max-w-xl mx-auto mt-8 text-base lg:text-xl text-secondary-foreground">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid fugit impedit odit excepturi at voluptatibus hic pariatur iste quos temporibus.
+              Crie e edite notas com rapidez e facilidade, salve suas configurações de tema e anotações.
             </p>
           </div>
 
