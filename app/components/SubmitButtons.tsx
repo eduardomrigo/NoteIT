@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import { useFormStatus } from "react-dom"
-import { Loader2, LoaderCircle, Trash } from "lucide-react"
+import { Copy, CopyCheck, Loader2, LoaderCircle, Trash } from "lucide-react"
+import { useState } from "react"
 
 
 
@@ -98,3 +99,29 @@ export function TrashDeleteButton() {
     )
 }
 
+export function StripeCardButton() {
+    const [copied, setCopied] = useState(false);
+
+    const handleClick = () => {
+        navigator.clipboard.writeText("4242-4242-4242-4242");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1000);
+    };
+
+    return (
+        <Button
+            className="group flex items-center rounded-md px-3 py-2 text-sm font-medium  w-full sm:w-10 md:w-10 lg:w-10"
+            onClick={handleClick}
+            size='icon'
+            disabled={copied}
+        >
+            {copied ? (
+
+                <CopyCheck className="size-4" />
+            ) : (
+                <Copy className="size-4" />
+            )}
+        </Button>
+    );
+
+}

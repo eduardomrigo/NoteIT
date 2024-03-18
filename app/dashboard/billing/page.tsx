@@ -4,13 +4,15 @@ import { CheckCircle2 } from "lucide-react";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { getStripeSession, stripe } from "@/app/lib/stripe";
 import { redirect } from "next/navigation";
-import { StripePortalButton, StripeSubscriptionCreatinButton } from "@/app/components/SubmitButtons";
+import { StripeCardButton, StripePortalButton, StripeSubscriptionCreatinButton } from "@/app/components/SubmitButtons";
 import { unstable_noStore as noStore } from "next/cache";
+import { Separator } from "@/components/ui/separator";
+import { Input } from "@/components/ui/input";
+
 
 const proItens = [
     { name: 'Gere quantas notas quiser' },
     { name: 'Suporte por WhatsApp' },
-    { name: 'Compartilhe suas notas nos Stories' },
     { name: 'Badge de membro PRO' },
 ]
 
@@ -108,9 +110,19 @@ export default async function BillingPage() {
                         <h3 className="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide bg-primary/10 text-primary">Mensal</h3>
                     </div>
                     <div className="mt-4 flex items-baseline text-5xl font-extrabold">
-                        R$15 <span className="ml-1 text-2xl text-muted-foreground">/mês</span>
+                        R$15 <span className="ml-1 text-2xl text-muted-foreground">/mês*</span>
                     </div>
-                    <p className="mt-3 text-lg text-muted-foreground">Crie quantas notas quiser por R$15,00 mensais!</p>
+
+                    <Separator />
+                    <p className="mt-4 text-sm text-muted-foreground">* Utilize o cartão de teste do <span className="text-primary">Stripe:</span></p>
+
+
+                    <div className="mt-4 gap-2 flex items-center">
+                        <Input className="w-fit" type="text" disabled value={'4242-4242-4242-4242'} />
+                        <StripeCardButton />
+                    </div>
+
+
                 </CardContent>
                 <div className="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-secondary rounded-lg m-1 space-y-6 sm:p-10 sm:pt-6">
                     <ul className="space-y-4">
