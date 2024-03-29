@@ -10,6 +10,7 @@ import Link from "next/link";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 import { revalidatePath, unstable_noStore as noStore } from "next/cache";
+import { Breadcrumbs } from "@/app/components/breadcrumbs";
 
 
 async function getData({ userId, noteId }: { userId: string, noteId: string }) {
@@ -59,42 +60,46 @@ export default async function DynamicRoute({ params }: { params: { id: string } 
     }
 
     return (
-        <Card>
-            <form action={postData}>
-                <CardHeader>
-                    <CardTitle>Editar nota</CardTitle>
-                    <CardDescription>Preencha os campos abaixo para editar sua nota</CardDescription>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-y-5">
-                    <div className="gap-y-2 flex flex-col">
-                        <Label>Título</Label>
-                        <Input
-                            required
-                            type="text"
-                            name="title"
-                            placeholder="Insira um título para sua nota"
-                            defaultValue={data?.title}
-                        />
-                    </div>
+        <div className="grid items-start gap-8">
+            <Breadcrumbs path='Editar Nota' />
+            <Card>
+                <form action={postData}>
+                    <CardHeader>
+                        <CardTitle>Editar nota</CardTitle>
+                        <CardDescription>Preencha os campos abaixo para editar sua nota</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex flex-col gap-y-5">
+                        <div className="gap-y-2 flex flex-col">
+                            <Label>Título</Label>
+                            <Input
+                                required
+                                type="text"
+                                name="title"
+                                placeholder="Insira um título para sua nota"
+                                defaultValue={data?.title}
+                            />
+                        </div>
 
-                    <div className="flex flex-col gap-y-2">
-                        <Label>Descrição</Label>
-                        <Textarea
-                            name="description"
-                            placeholder="Insira a descrição de sua nota"
-                            required
-                            defaultValue={data?.description}
-                        />
-                    </div>
-                </CardContent>
+                        <div className="flex flex-col gap-y-2">
+                            <Label>Descrição</Label>
+                            <Textarea
+                                name="description"
+                                placeholder="Insira a descrição de sua nota"
+                                required
+                                defaultValue={data?.description}
+                            />
+                        </div>
+                    </CardContent>
 
-                <CardFooter className="flex justify-between">
-                    <Button asChild variant='destructive'>
-                        <Link href='/dashboard'>Cancelar</Link>
-                    </Button>
-                    <UpdateNoteButton />
-                </CardFooter>
-            </form>
-        </Card>
+                    <CardFooter className="flex justify-between">
+                        <Button asChild variant='destructive'>
+                            <Link href='/dashboard'>Cancelar</Link>
+                        </Button>
+                        <UpdateNoteButton />
+                    </CardFooter>
+                </form>
+            </Card>
+        </div>
+
     )
 }

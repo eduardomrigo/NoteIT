@@ -10,6 +10,7 @@ import { unstable_noStore as noStore } from "next/cache";
 
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
+import { Breadcrumbs } from "@/app/components/breadcrumbs";
 
 export default async function NewNoteRoute() {
 
@@ -41,40 +42,44 @@ export default async function NewNoteRoute() {
     }
 
     return (
-        <Card>
-            <form action={postData}>
-                <CardHeader>
-                    <CardTitle>Nova nota</CardTitle>
-                    <CardDescription>Preencha os campos abaixo para criar uma nova nota</CardDescription>
-                </CardHeader>
-                <CardContent className="flex flex-col gap-y-5">
-                    <div className="gap-y-2 flex flex-col">
-                        <Label>Título</Label>
-                        <Input
-                            required
-                            type="text"
-                            name="title"
-                            placeholder="Insira um título para sua nota"
-                        />
-                    </div>
+        <div className="grid items-start gap-8">
+            <Breadcrumbs path='Criar Nota' />
+            <Card>
+                <form action={postData}>
+                    <CardHeader>
+                        <CardTitle>Nova nota</CardTitle>
+                        <CardDescription>Preencha os campos abaixo para criar uma nova nota</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex flex-col gap-y-5">
+                        <div className="gap-y-2 flex flex-col">
+                            <Label>Título</Label>
+                            <Input
+                                required
+                                type="text"
+                                name="title"
+                                placeholder="Insira um título para sua nota"
+                            />
+                        </div>
 
-                    <div className="flex flex-col gap-y-2">
-                        <Label>Descrição</Label>
-                        <Textarea
-                            name="description"
-                            placeholder="Insira a descrição de sua nota"
-                            required
-                        />
-                    </div>
-                </CardContent>
+                        <div className="flex flex-col gap-y-2">
+                            <Label>Descrição</Label>
+                            <Textarea
+                                name="description"
+                                placeholder="Insira a descrição de sua nota"
+                                required
+                            />
+                        </div>
+                    </CardContent>
 
-                <CardFooter className="flex justify-between">
-                    <Button asChild variant='destructive'>
-                        <Link href='/dashboard'>Cancelar</Link>
-                    </Button>
-                    <CreateNoteButton />
-                </CardFooter>
-            </form>
-        </Card>
+                    <CardFooter className="flex justify-between">
+                        <Button asChild variant='destructive'>
+                            <Link href='/dashboard'>Cancelar</Link>
+                        </Button>
+                        <CreateNoteButton />
+                    </CardFooter>
+                </form>
+            </Card>
+        </div>
+
     )
 }

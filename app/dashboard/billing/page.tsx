@@ -8,6 +8,7 @@ import { StripeCardButton, StripePortalButton, StripeSubscriptionCreatinButton }
 import { unstable_noStore as noStore } from "next/cache";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
+import { Breadcrumbs } from "@/app/components/breadcrumbs";
 
 
 const proItens = [
@@ -78,6 +79,7 @@ export default async function BillingPage() {
     if (data?.status === 'active') {
         return (
             <div className="grid items-start gap-8">
+                <Breadcrumbs path='Pagamento' />
                 <div className="flex items-center justify-between px-2">
                     <div className="grid gap-1">
                         <h1 className="text-3xl md:text-4xl">Plano</h1>

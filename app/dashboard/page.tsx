@@ -24,6 +24,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { Breadcrumbs } from "../components/breadcrumbs";
 
 async function getData(userId: string) {
 
@@ -71,10 +72,11 @@ export default async function DashboardPage() {
         id: noteId,
       },
     });
-    revalidatePath("/dasboard");
+    revalidatePath("/dashboard");
   }
   return (
     <div className="grid items-start gap-y-8">
+      <Breadcrumbs path={'/Página Inicial'} />
       <div className="flex items-center justify-between px-2">
         <div className="grid gap-1">
           <h1 className="text-3xl md:text-4xl">Suas notas</h1>
