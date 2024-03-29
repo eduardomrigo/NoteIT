@@ -27,7 +27,6 @@ O Note IT é uma aplicação de gerenciamento de anotações, onde você consegu
 
 ### Pré requisitos
 
-This is an example of how to list things you need to use the software and how to install them.
 * execute o seguinte comando em seu terminal
   ```sh
   npm install
