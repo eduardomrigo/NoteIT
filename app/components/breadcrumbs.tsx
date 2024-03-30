@@ -7,9 +7,14 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 
+interface Paths {
+    path?: string;
+    value?: string
+    index?: string;
+}
 
-export const Breadcrumbs = ({ path }) => {
-    const pathnames = path.split('/').filter(x => x)
+export const Breadcrumbs = ({ path }: Paths) => {
+    const pathnames = path ? path.split('/').filter(x => x) : []
     return (
         <Breadcrumb>
             <BreadcrumbList>
