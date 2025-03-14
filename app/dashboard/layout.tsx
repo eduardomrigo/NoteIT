@@ -72,7 +72,7 @@ export default async function DashboardLayout({ children }: { children: ReactNod
         profileImage: user.picture as string
     })
     return (
-        <div className="flex flex-col space-y-6 mt-10">
+        <div className="flex flex-col space-y-6 mt-10 h-[80vh]">
             <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
                 <aside className="hidden w-[200px] flex-col md:flex">
                     <DashboardNav />

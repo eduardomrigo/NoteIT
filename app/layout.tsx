@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { unstable_noStore as noStore } from "next/cache";
+import CustomButton from "./components/AuthorButton";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -90,6 +91,9 @@ export default async function RootLayout({
           {children}
           <SpeedInsights />
           <Analytics />
+          <footer className="py-6 h-full flex justify-center">
+            <CustomButton />
+          </footer>
         </ThemeProvider>
       </body>
     </html>
